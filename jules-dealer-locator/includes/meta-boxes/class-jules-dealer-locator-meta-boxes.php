@@ -67,6 +67,9 @@ class Jules_Dealer_Locator_Meta_Boxes {
         $address = get_post_meta( $post->ID, '_dealer_address', true );
         $phone = get_post_meta( $post->ID, '_dealer_phone', true );
         $website = get_post_meta( $post->ID, '_dealer_website', true );
+        $latitude = get_post_meta( $post->ID, '_dealer_latitude', true );
+        $longitude = get_post_meta( $post->ID, '_dealer_longitude', true );
+
         // Display the form, using the current value.
         ?>
         <p>
@@ -80,6 +83,14 @@ class Jules_Dealer_Locator_Meta_Boxes {
         <p>
             <label for="dealer_website"><?php _e( 'Website', 'jules-dealer-locator' ); ?></label>
             <input type="text" id="dealer_website" name="dealer_website" value="<?php echo esc_attr( $website ); ?>" class="widefat" />
+        </p>
+        <p>
+            <label for="dealer_latitude"><?php _e( 'Latitude', 'jules-dealer-locator' ); ?></label>
+            <input type="text" id="dealer_latitude" name="dealer_latitude" value="<?php echo esc_attr( $latitude ); ?>" class="widefat" readonly />
+        </p>
+        <p>
+            <label for="dealer_longitude"><?php _e( 'Longitude', 'jules-dealer-locator' ); ?></label>
+            <input type="text" id="dealer_longitude" name="dealer_longitude" value="<?php echo esc_attr( $longitude ); ?>" class="widefat" readonly />
         </p>
         <?php
     }

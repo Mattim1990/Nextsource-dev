@@ -67,9 +67,7 @@
         $('#dealer-search').on('keyup', filterDealers);
         $('.service-filters').on('change', 'input', filterDealers);
 
-        // Initially show all markers
-        var initial_dealers = jules_dealer_locator_data.dealers.map(function(d) { return d.id; });
-        updateMarkers(initial_dealers);
+        filterDealers();
 
         $('.dealer-item').on('click', function() {
             var dealerId = $(this).data('id');
