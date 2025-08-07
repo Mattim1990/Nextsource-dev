@@ -66,10 +66,26 @@ class Jules_Dealer_Locator_Shortcodes {
         <div class="jules-dealer-locator-wrapper">
             <div id="jules-dealer-map" style="height: 500px;"></div>
             <div class="jules-dealer-locator">
-                <div class="dealer-filters">
-                    <input type="text" id="dealer-search" placeholder="<?php _e( 'Search dealers...', 'jules-dealer-locator' ); ?>">
+                <div class="dealer-list-header">
+                    <h3><?php _e( 'Dealers', 'jules-dealer-locator' ); ?></h3>
+                    <button id="toggle-dealer-list" class="button-secondary">-</button>
                 </div>
-                <div class="dealer-list">
+                <div class="dealer-list-content">
+                    <div class="dealer-filters">
+                        <input type="text" id="dealer-search" placeholder="<?php _e( 'Search dealers...', 'jules-dealer-locator' ); ?>">
+                        <div class="service-filters">
+                            <h4><?php _e( 'Filter by service:', 'jules-dealer-locator' ); ?></h4>
+                            <div class="service-grid">
+                                <?php
+                                $services = get_terms( array( 'taxonomy' => 'service', 'hide_empty' => false ) );
+                                foreach ( $services as $service ) {
+                                    echo '<label><input type="checkbox" name="service" value="' . esc_attr( $service->term_id ) . '"> ' . esc_html( $service->name ) . '</label>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dealer-list">
                     <?php while ( $dealers->have_posts() ) : $dealers->the_post(); ?>
                         <div class="dealer-item" data-id="<?php echo get_the_ID(); ?>">
                             <h3><?php the_title(); ?></h3>

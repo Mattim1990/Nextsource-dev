@@ -111,6 +111,7 @@ class Jules_Dealer_Locator_Public {
                     'address'   => get_post_meta( $dealer_id, '_dealer_address', true ),
                     'phone'     => get_post_meta( $dealer_id, '_dealer_phone', true ),
                     'website'   => get_post_meta( $dealer_id, '_dealer_website', true ),
+                    'services'  => wp_get_post_terms( $dealer_id, 'service', array( 'fields' => 'ids' ) ),
                 );
             }
             wp_reset_postdata();

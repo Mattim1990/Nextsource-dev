@@ -48,8 +48,46 @@
     outline: none;
 }
 
-.dealer-list {
+.dealer-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dealer-list-header h3 {
+    margin: 0;
+}
+
+#toggle-dealer-list {
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-dealer-list:hover {
+    background: var(--dark-blue);
+}
+
+.dealer-list-content {
     max-height: 520px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.dealer-list-content.collapsed {
+    max-height: 0;
+}
+
+.dealer-list {
+    max-height: 450px;
     overflow-y: auto;
     padding-right: 15px;
 }

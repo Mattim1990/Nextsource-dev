@@ -147,6 +147,11 @@ class Jules_Dealer_Locator {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/user-roles/class-jules-dealer-locator-user-roles.php';
         $this->loader->add_action( 'init', 'Jules_Dealer_Locator_User_Roles', 'add_dealer_role' );
 
+        // Add Taxonomies
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/taxonomies/class-jules-dealer-locator-taxonomies.php';
+        $plugin_taxonomies = new Jules_Dealer_Locator_Taxonomies();
+        $this->loader->add_action( 'init', $plugin_taxonomies, 'register_services_taxonomy' );
+
         // Add Tutorial Page
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tutorial/class-jules-dealer-locator-tutorial.php';
         $plugin_tutorial = new Jules_Dealer_Locator_Tutorial();
