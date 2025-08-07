@@ -75,6 +75,8 @@ class Jules_Dealer_Locator_Meta_Boxes {
         <p>
             <label for="dealer_address"><?php _e( 'Address', 'jules-dealer-locator' ); ?></label>
             <input type="text" id="dealer_address" name="dealer_address" value="<?php echo esc_attr( $address ); ?>" class="widefat" />
+            <button type="button" id="geocode_address" class="button"><?php _e( 'Geocode', 'jules-dealer-locator' ); ?></button>
+            <span id="geocode_status"></span>
         </p>
         <p>
             <label for="dealer_phone"><?php _e( 'Phone Number', 'jules-dealer-locator' ); ?></label>
@@ -86,11 +88,11 @@ class Jules_Dealer_Locator_Meta_Boxes {
         </p>
         <p>
             <label for="dealer_latitude"><?php _e( 'Latitude', 'jules-dealer-locator' ); ?></label>
-            <input type="text" id="dealer_latitude" name="dealer_latitude" value="<?php echo esc_attr( $latitude ); ?>" class="widefat" readonly />
+            <input type="text" id="dealer_latitude" name="dealer_latitude" value="<?php echo esc_attr( $latitude ); ?>" class="widefat" />
         </p>
         <p>
             <label for="dealer_longitude"><?php _e( 'Longitude', 'jules-dealer-locator' ); ?></label>
-            <input type="text" id="dealer_longitude" name="dealer_longitude" value="<?php echo esc_attr( $longitude ); ?>" class="widefat" readonly />
+            <input type="text" id="dealer_longitude" name="dealer_longitude" value="<?php echo esc_attr( $longitude ); ?>" class="widefat" />
         </p>
         <?php
     }
