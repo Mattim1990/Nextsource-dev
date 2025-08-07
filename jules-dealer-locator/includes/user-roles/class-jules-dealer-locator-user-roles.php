@@ -34,15 +34,24 @@ class Jules_Dealer_Locator_User_Roles {
      * @since    1.0.0
      */
     public static function add_dealer_role() {
-        add_role(
-            self::$dealer_role,
-            __( 'Dealer', 'jules-dealer-locator' ),
-            array(
-                'read'         => true,
-                'edit_posts'   => true,
-                'upload_files' => true,
-            )
+        $caps = array(
+            'read' => true,
+            'edit_dealer' => true,
+            'read_dealer' => true,
+            'delete_dealer' => true,
+            'edit_dealers' => true,
+            'edit_others_dealers' => true,
+            'publish_dealers' => true,
+            'read_private_dealers' => true,
+            'upload_files' => true,
         );
+        add_role( self::$dealer_role, __( 'Dealer', 'jules-dealer-locator' ), $caps );
+
+        // Add capabilities to administrator role
+        $admin_role = get_role( 'administrator' );
+        foreach ( $caps as $cap => $grant ) {
+            $admin_role->add_cap( $cap );
+        }
     }
 
     /**

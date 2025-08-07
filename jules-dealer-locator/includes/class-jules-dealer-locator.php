@@ -143,15 +143,14 @@ class Jules_Dealer_Locator {
         $this->loader->add_action( 'add_meta_boxes', $plugin_meta_boxes, 'add_meta_boxes' );
         $this->loader->add_action( 'save_post', $plugin_meta_boxes, 'save_meta_data' );
 
-        // Add Settings Page
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/settings/class-jules-dealer-locator-settings.php';
-        $plugin_settings = new Jules_Dealer_Locator_Settings( $this->get_plugin_name() );
-        $this->loader->add_action( 'admin_menu', $plugin_settings, 'add_settings_page' );
-        $this->loader->add_action( 'admin_init', $plugin_settings, 'register_settings' );
-
         // Add User Roles
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/user-roles/class-jules-dealer-locator-user-roles.php';
         $this->loader->add_action( 'init', 'Jules_Dealer_Locator_User_Roles', 'add_dealer_role' );
+
+        // Add Tutorial Page
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/tutorial/class-jules-dealer-locator-tutorial.php';
+        $plugin_tutorial = new Jules_Dealer_Locator_Tutorial();
+        $this->loader->add_action( 'admin_menu', $plugin_tutorial, 'add_tutorial_page' );
     }
 
     /**

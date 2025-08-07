@@ -1,0 +1,105 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    background: #f1f1f1;
+    color: #444;
+    font-size: 13px;
+    line-height: 1.4em;
+}
+
+.wp-admin-screenshot {
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    background: #fff;
+    max-width: 800px;
+    margin: 20px;
+}
+
+.wp-admin-screenshot .header {
+    background: #23282d;
+    color: #fff;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.wp-admin-screenshot .content {
+    padding: 20px;
+}
+
+.wp-admin-screenshot h1 {
+    font-size: 23px;
+    font-weight: 400;
+    margin: 0 0 20px;
+    color: #23282d;
+}
+
+.wp-admin-screenshot .meta-box {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    margin-bottom: 20px;
+}
+
+.wp-admin-screenshot .meta-box .hndle {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin: 0;
+    line-height: 1.4;
+    border-bottom: 1px solid #eee;
+    background: #f5f5f5;
+}
+
+.wp-admin-screenshot .meta-box .inside {
+    padding: 12px;
+}
+
+.wp-admin-screenshot .form-field {
+    margin-bottom: 10px;
+}
+
+.wp-admin-screenshot .form-field label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.wp-admin-screenshot .form-field input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+    background-color: #fff;
+    color: #32373c;
+}
+
+.wp-admin-screenshot .button {
+    background: #007cba;
+    border-color: #0071a1;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: none;
+    padding: 5px 15px;
+    font-size: 13px;
+    line-height: 2;
+    border-radius: 3px;
+    border-width: 1px;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.wp-admin-screenshot .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wp-admin-screenshot .menu li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.wp-admin-screenshot .menu li.active {
+    background: #007cba;
+    color: #fff;
+}
