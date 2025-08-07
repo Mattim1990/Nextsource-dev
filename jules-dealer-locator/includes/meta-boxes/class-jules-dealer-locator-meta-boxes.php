@@ -67,9 +67,6 @@ class Jules_Dealer_Locator_Meta_Boxes {
         $address = get_post_meta( $post->ID, '_dealer_address', true );
         $phone = get_post_meta( $post->ID, '_dealer_phone', true );
         $website = get_post_meta( $post->ID, '_dealer_website', true );
-        $latitude = get_post_meta( $post->ID, '_dealer_latitude', true );
-        $longitude = get_post_meta( $post->ID, '_dealer_longitude', true );
-
         // Display the form, using the current value.
         ?>
         <p>
@@ -83,14 +80,6 @@ class Jules_Dealer_Locator_Meta_Boxes {
         <p>
             <label for="dealer_website"><?php _e( 'Website', 'jules-dealer-locator' ); ?></label>
             <input type="text" id="dealer_website" name="dealer_website" value="<?php echo esc_attr( $website ); ?>" class="widefat" />
-        </p>
-        <p>
-            <label for="dealer_latitude"><?php _e( 'Latitude', 'jules-dealer-locator' ); ?></label>
-            <input type="text" id="dealer_latitude" name="dealer_latitude" value="<?php echo esc_attr( $latitude ); ?>" class="widefat" />
-        </p>
-        <p>
-            <label for="dealer_longitude"><?php _e( 'Longitude', 'jules-dealer-locator' ); ?></label>
-            <input type="text" id="dealer_longitude" name="dealer_longitude" value="<?php echo esc_attr( $longitude ); ?>" class="widefat" />
         </p>
         <?php
     }
@@ -125,11 +114,50 @@ class Jules_Dealer_Locator_Meta_Boxes {
         }
 
         // Sanitize user input and update the meta fields.
-        $fields = array( 'address', 'phone', 'website', 'latitude', 'longitude' );
+        $fields = array( 'address', 'phone', 'website' );
         foreach ( $fields as $field ) {
             if ( isset( $_POST[ 'dealer_' . $field ] ) ) {
                 update_post_meta( $post_id, '_dealer_' . $field, sanitize_text_field( $_POST[ 'dealer_' . $field ] ) );
             }
+        }
+
+        // Geocode the address
+        if ( isset( $_POST['dealer_address'] ) ) {
+            $address = sanitize_text_field( $_POST['dealer_address'] );
+            $old_address = get_post_meta( $post_id, '_dealer_address', true );
+
+            if ( $address != $old_address ) {
+                $this->geocode_address( $post_id, $address );
+            }
+        }
+    }
+
+    /**
+     * Geocode the address and save the latitude and longitude.
+     *
+     * @since    1.0.0
+     * @param    int      $post_id    The ID of the post.
+     * @param    string   $address    The address to geocode.
+     */
+    private function geocode_address( $post_id, $address ) {
+        $url = 'https://nominatim.openstreetmap.org/search?q=' . urlencode( $address ) . '&format=json&limit=1';
+        $args = array(
+            'headers' => array(
+                'User-Agent' => 'Jules Dealer Locator WordPress Plugin',
+            ),
+        );
+        $response = wp_remote_get( $url, $args );
+
+        if ( is_wp_error( $response ) ) {
+            return;
+        }
+
+        $body = wp_remote_retrieve_body( $response );
+        $data = json_decode( $body, true );
+
+        if ( ! empty( $data ) && isset( $data[0]['lat'] ) && isset( $data[0]['lon'] ) ) {
+            update_post_meta( $post_id, '_dealer_latitude', $data[0]['lat'] );
+            update_post_meta( $post_id, '_dealer_longitude', $data[0]['lon'] );
         }
     }
 

@@ -56,7 +56,7 @@ class Jules_Dealer_Locator_Tutorial {
             <?php include plugin_dir_path( __FILE__ ) . '../../assets/tutorial/screenshot-2.html'; ?>
 
             <h2>Step 3: Add dealer details</h2>
-            <p>In the "Dealer Details" meta box, enter the dealer's address, phone number, website, latitude, and longitude.</p>
+            <p>In the "Dealer Details" meta box, enter the dealer's address, phone number, and website. The latitude and longitude will be automatically fetched from the address.</p>
             <?php include plugin_dir_path( __FILE__ ) . '../../assets/tutorial/screenshot-3.html'; ?>
 
             <h2>Step 4: Set the dealer logo</h2>
