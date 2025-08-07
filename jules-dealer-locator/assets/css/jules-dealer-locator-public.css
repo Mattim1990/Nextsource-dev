@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --dark-blue: #051d2e;
+    --purple: #6e3bf7;
+    --yellow: #ffe143;
+    --light-gray: #e5e8eb;
+    --white: #ffffff;
+}
+
+.jules-dealer-locator-wrapper {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    gap: 30px;
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+#jules-dealer-map {
+    flex: 2;
+    min-height: 600px;
+    border-radius: 15px;
+    border: 5px solid var(--white);
+}
+
+.jules-dealer-locator {
+    flex: 1;
+    max-width: 450px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.dealer-filters #dealer-search {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid var(--light-gray);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    color: var(--dark-blue);
+    transition: border-color 0.3s ease;
+}
+
+.dealer-filters #dealer-search:focus {
+    border-color: var(--purple);
+    outline: none;
+}
+
+.dealer-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dealer-list-header h3 {
+    margin: 0;
+}
+
+#toggle-dealer-list {
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-dealer-list:hover {
+    background: var(--dark-blue);
+}
+
+.dealer-list-content {
+    max-height: 520px;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.dealer-list-content.collapsed {
+    max-height: 0;
+}
+
+.dealer-list {
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.dealer-item {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.dealer-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--purple);
+}
+
+.dealer-item h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+
+.dealer-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--dark-blue);
+}
+
+.dealer-details ul li {
+    margin-bottom: 10px;
+}
+
+.dealer-details ul li strong {
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+
+.dealer-details ul li a {
+    color: var(--purple);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dealer-details ul li a:hover {
+    color: var(--dark-blue);
+}
+
+@media (max-width: 768px) {
+    .jules-dealer-locator-wrapper {
+        flex-direction: column;
+    }
+
+    .jules-dealer-locator {
+        max-width: 100%;
+    }
+}
